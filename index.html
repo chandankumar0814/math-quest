@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOMIS Purnea - Math Quest</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ed1c24">
+</head>
+<body>
+    <div class="area">
+        <ul class="circles">
+            <li>5</li><li>+</li><li>8</li><li>=</li><li>×</li>
+            <li>3</li><li>?</li><li>÷</li><li>2</li><li>-</li>
+        </ul>
+    </div>
+
+    <div class="app-container">
+        <nav class="top-nav">
+            <button onclick="goHome()" class="home-btn">🏠 Home</button>
+            <div class="nav-branding">BOMIS PURNEA</div>
+        </nav>
+
+        <header id="main-header">
+            <img src="logo.png" alt="BOMIS Logo" id="school-logo" class="logo">
+            <h1 class="wobble-text">Math Quest</h1>
+        </header>
+
+        <div id="setup-screen" class="card fade-in">
+            <div class="setup-section">
+                <h3>Select Grade</h3>
+                <div class="sliding-selector" id="grade-selector">
+                    <button class="slide-opt active" onclick="setGrade(this, 'LKG')">LKG</button>
+                    <button class="slide-opt" onclick="setGrade(this, 'UKG')">UKG</button>
+                    <button class="slide-opt" onclick="setGrade(this, 'G1')">G1</button>
+                    <button class="slide-opt" onclick="setGrade(this, 'G2')">G2</button>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <h3>Select Operation</h3>
+                <div class="sliding-selector" id="op-selector">
+                    <button class="slide-opt active" onclick="setOp(this, 'addition')">+</button>
+                    <button class="slide-opt" onclick="setOp(this, 'subtraction')">-</button>
+                    <button class="slide-opt adv-node hidden" onclick="setOp(this, 'multiplication')">×</button>
+                    <button class="slide-opt adv-node hidden" onclick="setOp(this, 'division')">÷</button>
+                </div>
+            </div>
+
+            <button onclick="startGame()" class="btn-primary bounce">Start Adventure</button>
+        </div>
+
+        <div id="game-screen" class="hidden">
+            <div id="quiz-grid" class="grid"></div>
+            <button onclick="checkResults()" class="btn-submit-all">Submit All</button>
+        </div>
+
+        <div id="zoom-overlay" class="overlay hidden">
+            <div class="zoom-card">
+                <h2 id="active-question">0 + 0</h2>
+                <input type="number" id="answer-input" placeholder="?" pattern="\d*">
+                <div class="modal-buttons">
+                    <button onclick="submitAnswer()" class="btn-primary">OK</button>
+                    <button onclick="closeZoom()" class="btn-secondary">Back</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-overlay" class="overlay hidden">
+            <div class="zoom-card result-card">
+                <h2 id="score-text">Results</h2>
+                <div class="score-display"><span id="score-number">0</span>/16</div>
+                <div class="modal-buttons">
+                    <button onclick="retrySame()" class="btn-secondary">Retry</button>
+                    <button onclick="goHome()" class="btn-primary">New Sheet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
